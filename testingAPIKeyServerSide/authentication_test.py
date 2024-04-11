@@ -2,7 +2,8 @@ from requests import Session
 
 def create_account(email, password):
     with Session() as session:
-        url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCDFcFc8f2VdQ9zCV2gPdZDlQppwx87OvU'
+        api_key = ''
+        url = f'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key={api_key}'
         data = {
             'clintType': 'CLIENT_TYPE_WEB',
             'email': email,
@@ -11,10 +12,10 @@ def create_account(email, password):
     
         }
         response = session.post(url, json={'email': email, 'password': password})
-        return response.status_code
+        print(response.text)
     
 
 if __name__ == '__main__':
-    email = 'qwerty@gmail.com'
+    email = 'qwertyy0@gmail.com'
     password = 'qwerty'
     create_account(email, password)
